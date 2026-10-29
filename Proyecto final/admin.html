@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SENA Editorial - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#e7ffec",
+              "tertiary": "#566434",
+              "on-primary-fixed-variant": "#006940",
+              "on-error-container": "#6e0a12",
+              "tertiary-fixed-dim": "#dfefb2",
+              "secondary-container": "#cde9d8",
+              "on-secondary-fixed": "#2c4438",
+              "secondary-dim": "#40584c",
+              "secondary": "#4b6557",
+              "on-secondary-container": "#3e574a",
+              "tertiary-fixed": "#edfebf",
+              "primary-fixed-dim": "#81e9ae",
+              "on-error": "#fff7f6",
+              "surface-container": "#e9efea",
+              "on-surface": "#2c3430",
+              "inverse-on-surface": "#9a9e9a",
+              "on-primary-fixed": "#00492b",
+              "on-background": "#2c3430",
+              "surface-variant": "#dce5de",
+              "outline": "#747d77",
+              "primary-dim": "#00603a",
+              "error-dim": "#67040d",
+              "primary": "#006d43",
+              "surface": "#f7faf6",
+              "background": "#f7faf6",
+              "on-tertiary-container": "#556333",
+              "tertiary-dim": "#4b5829",
+              "on-surface-variant": "#58615c",
+              "secondary-fixed": "#cde9d8",
+              "surface-tint": "#006d43",
+              "surface-dim": "#d3dcd6",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#435022",
+              "inverse-surface": "#0b0f0d",
+              "on-primary-container": "#005e39",
+              "secondary-fixed-dim": "#bfdbcb",
+              "on-secondary": "#e6ffef",
+              "outline-variant": "#abb4ae",
+              "surface-bright": "#f7faf6",
+              "error-container": "#fa746f",
+              "primary-container": "#8ff8bb",
+              "surface-container-high": "#e3eae4",
+              "on-secondary-fixed-variant": "#486154",
+              "error": "#a83836",
+              "inverse-primary": "#8ff8bb",
+              "on-tertiary": "#f1ffca",
+              "surface-container-low": "#f0f5f0",
+              "surface-container-highest": "#dce5de",
+              "primary-fixed": "#8ff8bb",
+              "on-tertiary-fixed-variant": "#5f6d3c",
+              "tertiary-container": "#edfebf"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f7faf6;
+        color: #2c3430;
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-[#f7faf6]/80 backdrop-blur-md shadow-sm shadow-[#2c3430]/05">
+        <div class="flex justify-between items-center px-6 py-4 max-w-full mx-auto">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-[#006d43]" data-icon="account_balance">account_balance</span>
+                <h1 class="font-['Inter'] tracking-tight font-bold text-xl tracking-[-0.02em] text-[#006d43]">SENA Editorial</h1>
+            </div>
+            <div class="flex items-center gap-8">
+                <nav class="hidden md:flex gap-6">
+                    <a class="text-[#006d43] font-semibold transition-colors duration-200" href="#">Gestión</a>
+                    <a class="text-[#58615c] hover:bg-[#f0f5f0] transition-colors duration-200 px-2 rounded-md" href="#">Supervisión</a>
+                    <a class="text-[#58615c] hover:bg-[#f0f5f0] transition-colors duration-200 px-2 rounded-md" href="#">Validación</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="material-symbols-outlined text-[#58615c] p-2 hover:bg-[#f0f5f0] rounded-full transition-colors">notifications</button>
+                    <a href="index.html" title="Cerrar Sesión" class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center hover:opacity-80 transition-opacity">
+                        <span class="material-symbols-outlined text-on-secondary-container text-sm">logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-[#f0f5f0] h-[1px] w-full"></div>
+    </header>
+
+    <main class="pt-24 pb-24 md:pb-12 px-6 max-w-7xl mx-auto space-y-16">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div class="space-y-2">
+                <p class="text-primary font-bold tracking-[0.05em] uppercase text-xs">Panel Administrativo</p>
+                <h2 class="text-4xl font-extrabold tracking-tight text-on-surface">Bienvenido, Administrador</h2>
+                <p class="text-on-surface-variant max-w-lg">Supervisión integral de procesos formativos y gestión de calidad institucional para el ciclo 2024.</p>
+            </div>
+            <button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-dim text-white px-6 py-3 rounded-md font-semibold active:scale-95 transition-transform shadow-lg shadow-primary/20">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span>Generar Nuevo Proceso</span>
+            </button>
+        </section>
+
+        <!-- Bento Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm transition-all hover:shadow-md">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-primary-container rounded-lg">
+                        <span class="material-symbols-outlined text-on-primary-container">group</span>
+                    </div>
+                    <span class="text-primary text-xs font-bold">+12% vs mes anterior</span>
+                </div>
+                <h3 class="text-on-surface-variant font-medium">Aprendices Activos</h3>
+                <p class="text-3xl font-bold mt-1">24.582</p>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm transition-all hover:shadow-md">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-secondary-container rounded-lg">
+                        <span class="material-symbols-outlined text-on-secondary-container">school</span>
+                    </div>
+                    <span class="text-secondary text-xs font-bold">Capacidad: 94%</span>
+                </div>
+                <h3 class="text-on-surface-variant font-medium">Instructores</h3>
+                <p class="text-3xl font-bold mt-1">1.140</p>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm transition-all hover:shadow-md">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-tertiary-container rounded-lg">
+                        <span class="material-symbols-outlined text-on-tertiary-container">pending_actions</span>
+                    </div>
+                    <span class="text-tertiary text-xs font-bold">15 Críticos</span>
+                </div>
+                <h3 class="text-on-surface-variant font-medium">Procesos en Curso</h3>
+                <p class="text-3xl font-bold mt-1">342</p>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold tracking-tight">Supervisión de Procesos</h3>
+                    <button class="text-primary text-sm font-semibold hover:underline">Ver reporte completo</button>
+                </div>
+                <div class="bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/10">
+                    <div class="p-6 bg-surface-container-lowest border-b border-outline-variant/10">
+                        <div class="flex gap-4">
+                            <span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold">Mantenimiento Industrial</span>
+                            <span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold">ADSO 244582</span>
+                        </div>
+                        <div class="mt-4 flex items-end justify-between">
+                            <div>
+                                <p class="text-sm text-on-surface-variant mb-1">Progreso de ejecución trimestral</p>
+                                <div class="w-64 h-2 bg-surface-variant rounded-full overflow-hidden">
+                                    <div class="w-[75%] h-full bg-primary"></div>
+                                </div>
+                            </div>
+                            <p class="text-xl font-bold text-primary">75%</p>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-outline-variant/5">
+                        <div class="p-5 flex items-center justify-between bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-colors">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-secondary">analytics</span>
+                                <div>
+                                    <p class="font-semibold text-sm">Validación de Guías de Aprendizaje</p>
+                                    <p class="text-xs text-on-surface-variant">Instructor: Julian Castro</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-outline">chevron_right</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-8">
+                <section class="space-y-4">
+                    <h3 class="text-xl font-bold tracking-tight">Validación Pendiente</h3>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/10 flex items-center gap-4 shadow-sm">
+                            <div class="h-12 w-12 rounded-full bg-secondary-container flex items-center justify-center">
+                                <span class="material-symbols-outlined text-on-secondary-container">person</span>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold">Carlos Andres Mora</p>
+                                <p class="text-xs text-on-surface-variant">Acta de Grado • ADSO</p>
+                            </div>
+                            <button class="material-symbols-outlined text-primary hover:bg-primary-container p-2 rounded-full transition-colors">verified</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="space-y-4">
+                    <h3 class="text-xl font-bold tracking-tight">Parámetros</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="p-4 bg-surface-container-high hover:bg-surface-variant transition-colors rounded-xl flex flex-col items-center text-center gap-2 group">
+                            <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">settings</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Config Gral</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- BottomNavBar (Mobile only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-[#f7faf6] border-t border-[#abb4ae]/20 shadow-[0_-4px_12px_rgba(44,52,48,0.04)] z-50">
+        <a class="flex flex-col items-center justify-center text-[#006d43] bg-[#edfebf] rounded-xl px-3 py-1 active:translate-y-0.5 duration-150" href="#">
+            <span class="material-symbols-outlined">dashboard_customize</span>
+            <span class="font-['Inter'] text-[11px] font-medium tracking-[0.05em] uppercase mt-1">Gestión</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-[#58615c] hover:text-[#006d43] transition-all active:translate-y-0.5 duration-150" href="index.html">
+            <span class="material-symbols-outlined">logout</span>
+            <span class="font-['Inter'] text-[11px] font-medium tracking-[0.05em] uppercase mt-1">Salir</span>
+        </a>
+    </nav>
+</body>
+</html>

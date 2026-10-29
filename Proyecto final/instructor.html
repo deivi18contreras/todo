@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SENA - Panel del Instructor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-container": "#556333",
+              "tertiary-fixed": "#edfebf",
+              "on-primary-fixed": "#00492b",
+              "error-container": "#fa746f",
+              "inverse-surface": "#0b0f0d",
+              "on-tertiary-fixed": "#435022",
+              "surface-variant": "#dce5de",
+              "primary": "#006d43",
+              "on-primary": "#e7ffec",
+              "surface-container-low": "#f0f5f0",
+              "surface-bright": "#f7faf6",
+              "inverse-primary": "#8ff8bb",
+              "surface-container-highest": "#dce5de",
+              "surface": "#f7faf6",
+              "tertiary-fixed-dim": "#dfefb2",
+              "tertiary-container": "#edfebf",
+              "outline": "#747d77",
+              "on-primary-fixed-variant": "#006940",
+              "on-error-container": "#6e0a12",
+              "primary-fixed-dim": "#81e9ae",
+              "outline-variant": "#abb4ae",
+              "on-secondary-fixed-variant": "#486154",
+              "inverse-on-surface": "#9a9e9a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-container": "#3e574a",
+              "on-error": "#fff7f6",
+              "secondary-container": "#cde9d8",
+              "primary-container": "#8ff8bb",
+              "surface-tint": "#006d43",
+              "secondary": "#4b6557",
+              "error-dim": "#67040d",
+              "error": "#a83836",
+              "surface-dim": "#d3dcd6",
+              "on-surface": "#2c3430",
+              "on-tertiary": "#f1ffca",
+              "secondary-dim": "#40584c",
+              "on-surface-variant": "#58615c",
+              "secondary-fixed": "#cde9d8",
+              "on-secondary": "#e6ffef",
+              "on-primary-container": "#005e39",
+              "on-secondary-fixed": "#2c4438",
+              "surface-container-high": "#e3eae4",
+              "background": "#f7faf6",
+              "tertiary-dim": "#4b5829",
+              "on-background": "#2c3430",
+              "tertiary": "#566434",
+              "on-tertiary-fixed-variant": "#5f6d3c",
+              "surface-container": "#e9efea",
+              "secondary-fixed-dim": "#bfdbcb",
+              "primary-dim": "#00603a",
+              "primary-fixed": "#8ff8bb"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f7faf6;
+        color: #2c3430;
+      }
+    </style>
+</head>
+<body class="bg-background min-h-screen pb-32">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-[#f7faf6]/80 backdrop-blur-xl shadow-sm">
+        <div class="flex justify-between items-center px-6 py-4 w-full">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-[#006d43] cursor-pointer">menu</span>
+                <h1 class="text-xl font-bold tracking-tighter text-[#006d43]">SENA</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="material-symbols-outlined text-[#58615c] p-2 hover:bg-[#f0f5f0] rounded-full transition-colors">notifications</button>
+                <a href="index.html" title="Cerrar Sesión" class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center hover:opacity-80 transition-opacity">
+                    <span class="material-symbols-outlined text-on-secondary-container text-sm">logout</span>
+                </a>
+            </div>
+        </div>
+        <div class="bg-[#f0f5f0] h-[1px] w-full"></div>
+    </header>
+
+    <main class="pt-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <span class="text-primary font-bold uppercase tracking-[0.05em] text-xs mb-2 block">Panel del Instructor</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-[-0.02em] text-on-surface">Mis Aprendices</h2>
+                    <p class="text-on-surface-variant mt-4 max-w-xl text-lg leading-relaxed">
+                        Seguimiento detallado de la etapa lectiva y productiva. Prioriza las acciones para los aprendices bajo observación administrativa.
+                    </p>
+                </div>
+                <div class="bg-surface-container-high px-6 py-4 rounded-xl flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">assignment_late</span>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Alertas Críticas</p>
+                        <p class="text-2xl font-bold text-on-surface">12 Aprendices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex items-center gap-4 mb-8">
+            <h3 class="text-2xl font-bold text-on-surface">Aprendices en Observación</h3>
+            <div class="h-[1px] flex-grow bg-surface-container-highest"></div>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group border border-outline-variant/10">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xl">AM</div>
+                        <div class="bg-error-container/20 text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Crítico</div>
+                    </div>
+                    <h4 class="text-xl font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Alejandro Morales</h4>
+                    <p class="text-on-surface-variant text-sm mb-4">Análisis y Desarrollo de Software</p>
+                    <div class="bg-tertiary-container/30 rounded-xl p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-on-tertiary-container">timer</span>
+                            <span class="text-sm font-bold text-on-tertiary-container">Finaliza observación</span>
+                        </div>
+                        <span class="text-sm font-extrabold text-on-tertiary-container">2 días</span>
+                    </div>
+                </div>
+                <div class="mt-auto border-t border-outline-variant/10 p-4 flex justify-between items-center">
+                    <button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline">Ver Bitácora</button>
+                    <button class="bg-primary-container text-on-primary-container p-2 rounded-lg active:scale-95 transition-transform"><span class="material-symbols-outlined">chat</span></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#f7faf6] border-t border-[#abb4ae]/20 shadow-lg">
+        <a class="flex flex-col items-center justify-center text-[#58615c]" href="#">
+            <span class="material-symbols-outlined mb-1">home</span>
+            <span class="text-[11px] font-medium uppercase tracking-[0.05em]">Inicio</span>
+        </a>
+        <a class="flex flex-col items-center justify-center bg-[#006d43] text-white rounded-xl px-5 py-2" href="#">
+            <span class="material-symbols-outlined mb-1">group</span>
+            <span class="text-[11px] font-medium uppercase tracking-[0.05em]">Aprendices</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-[#58615c]" href="index.html">
+            <span class="material-symbols-outlined mb-1">logout</span>
+            <span class="text-[11px] font-medium uppercase tracking-[0.05em]">Salir</span>
+        </a>
+    </nav>
+</body>
+</html>

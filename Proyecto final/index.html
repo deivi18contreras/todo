@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SENA - Inicio de Sesión Institucional</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100dvh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "outline": "#747d77",
+                "surface-container": "#e9efea",
+                "primary": "#006d43",
+                "primary-fixed": "#8ff8bb",
+                "on-tertiary-fixed": "#435022",
+                "surface-variant": "#dce5de",
+                "tertiary": "#566434",
+                "outline-variant": "#abb4ae",
+                "surface-tint": "#006d43",
+                "on-surface": "#2c3430",
+                "secondary-container": "#cde9d8",
+                "on-primary-fixed": "#00492b",
+                "surface-container-high": "#e3eae4",
+                "background": "#f7faf6",
+                "primary-dim": "#00603a",
+                "secondary": "#4b6557",
+                "on-secondary-fixed-variant": "#486154",
+                "on-secondary-container": "#3e574a",
+                "error": "#a83836",
+                "tertiary-fixed": "#edfebf",
+                "on-secondary-fixed": "#2c4438",
+                "tertiary-container": "#edfebf",
+                "inverse-on-surface": "#9a9e9a",
+                "on-tertiary": "#f1ffca",
+                "primary-container": "#8ff8bb",
+                "primary-fixed-dim": "#81e9ae",
+                "secondary-fixed-dim": "#bfdbcb",
+                "tertiary-fixed-dim": "#dfefb2",
+                "on-error-container": "#6e0a12",
+                "on-secondary": "#e6ffef",
+                "on-error": "#fff7f6",
+                "secondary-fixed": "#cde9d8",
+                "secondary-dim": "#40584c",
+                "on-primary-fixed-variant": "#006940",
+                "tertiary-dim": "#4b5829",
+                "on-tertiary-fixed-variant": "#5f6d3c",
+                "inverse-primary": "#8ff8bb",
+                "surface-container-low": "#f0f5f0",
+                "surface-bright": "#f7faf6",
+                "on-background": "#2c3430",
+                "on-tertiary-container": "#556333",
+                "inverse-surface": "#0b0f0d",
+                "surface": "#f7faf6",
+                "on-surface-variant": "#58615c",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-container": "#005e39",
+                "surface-container-highest": "#dce5de",
+                "error-dim": "#67040d",
+                "error-container": "#fa746f",
+                "on-primary": "#e7ffec",
+                "surface-dim": "#d3dcd6"
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
+    <!-- TopAppBar Shell -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#f7faf6]/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full shadow-[0_12px_32_rgba(44,52,48,0.06)]">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[#006d43] text-3xl">school</span>
+            <h1 class="text-2xl font-bold text-[#006d43] uppercase tracking-[0.05em]">SENA</h1>
+        </div>
+        <button class="px-5 py-2 rounded-lg bg-surface-container-lowest text-[#006d43] font-medium border border-outline-variant/20 hover:bg-[#e3eae4] transition-all duration-300 active:scale-[0.98]">
+            Novedades
+        </button>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-6 pt-24 pb-12">
+        <div class="w-full flex justify-center items-center">
+            <div class="w-full max-w-md bg-surface-container-lowest rounded-xl p-8 lg:p-10 shadow-[0_32px_64px_rgba(44,52,48,0.08)] border border-outline-variant/10">
+                <!-- Role Selector (Pills) -->
+                <div class="flex p-1.5 bg-surface-container rounded-xl mb-8 gap-1" id="role-selector">
+                    <button data-role="aprendiz" class="role-btn flex-1 py-2.5 px-2 text-xs font-bold rounded-lg transition-all duration-300 bg-[#edfebf] text-[#006d43] shadow-sm">
+                        ESTUDIANTE
+                    </button>
+                    <button data-role="instructor" class="role-btn flex-1 py-2.5 px-2 text-xs font-medium rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
+                        INSTRUCTOR
+                    </button>
+                    <button data-role="admin" class="role-btn flex-1 py-2.5 px-2 text-xs font-medium rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
+                        ADMIN
+                    </button>
+                </div>
+
+                <form class="space-y-6" id="login-form">
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-primary tracking-[0.05em] uppercase px-1">Número de Documento</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors">badge</span>
+                            <input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest focus:outline focus:outline-2 focus:outline-primary transition-all text-on-surface placeholder:text-outline-variant/60" placeholder="123456789" type="text" required/>
+                        </div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center px-1">
+                            <label class="text-xs font-bold text-primary tracking-[0.05em] uppercase">Contraseña</label>
+                            <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">¿Olvidaste tu clave?</a>
+                        </div>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors">lock</span>
+                            <input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-0 focus:bg-surface-container-lowest focus:outline focus:outline-2 focus:outline-primary transition-all text-on-surface placeholder:text-outline-variant/60" placeholder="••••••••" type="password" required/>
+                        </div>
+                    </div>
+                    <button class="w-full py-4 bg-gradient-to-br from-primary to-primary-dim text-on-primary font-bold rounded-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98] transition-all duration-300 mt-4" type="submit">
+                        Ingresar al Sistema
+                    </button>
+                </form>
+
+                <div class="mt-10 pt-8 border-t border-outline-variant/10 text-center space-y-4">
+                    <p class="text-sm text-on-surface-variant">¿No tienes una cuenta aún?</p>
+                    <button class="w-full py-3 border-2 border-primary/20 text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all">
+                        Registrarse en SofiaPlus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="fixed -bottom-24 -left-24 w-96 h-96 bg-primary-fixed opacity-10 rounded-full blur-[100px] -z-10"></div>
+    <div class="fixed top-1/4 -right-24 w-64 h-64 bg-tertiary-fixed opacity-20 rounded-full blur-[80px] -z-10"></div>
+
+    <footer class="w-full py-12 px-6 bg-surface-container-low flex flex-col items-center space-y-4 text-center">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-[#006d43]">account_balance</span>
+            <span class="font-bold text-on-surface">SENA Centro de Servicios</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6">
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-all" href="#">Privacidad</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-all" href="#">Términos</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-all" href="#">Contacto</a>
+        </div>
+        <p class="text-sm text-on-surface-variant mt-4">© 2024 Servicio Nacional de Aprendizaje SENA</p>
+    </footer>
+
+    <script>
+        let currentRole = 'aprendiz';
+        const roleBtns = document.querySelectorAll('.role-btn');
+        
+        roleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentRole = btn.dataset.role;
+                roleBtns.forEach(b => {
+                    b.classList.remove('bg-[#edfebf]', 'text-[#006d43]', 'shadow-sm', 'font-bold');
+                    b.classList.add('text-on-surface-variant', 'font-medium');
+                });
+                btn.classList.add('bg-[#edfebf]', 'text-[#006d43]', 'shadow-sm', 'font-bold');
+                btn.classList.remove('text-on-surface-variant', 'font-medium');
+            });
+        });
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const roleRoutes = {
+                'aprendiz': 'aprendiz.html',
+                'instructor': 'instructor.html',
+                'admin': 'admin.html'
+            };
+            window.location.href = roleRoutes[currentRole];
+        });
+    </script>
+</body>
+</html>
