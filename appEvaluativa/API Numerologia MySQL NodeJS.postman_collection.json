@@ -1,0 +1,139 @@
+{
+  "info": {
+    "_postman_id": "a7b1e5b0-2348-4e61-bfd9-832b59f70b50",
+    "name": "API MySQL NodeJS",
+    "description": "Colección de endpoints para Usuarios, Lecturas y Pagos (Node.js + MySQL)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Listar usuarios",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/usuarios" }
+        },
+        {
+          "name": "Obtener usuario por ID",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/usuarios/1" }
+        },
+        {
+          "name": "Registrar usuario",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Carlos Ramírez\",\n  \"email\": \"carlos@example.com\",\n  \"fecha_nacimiento\": \"1990-12-15\"\n}"
+            },
+            "url": "http://localhost:3000/api/usuarios"
+          }
+        },
+        {
+          "name": "Actualizar usuario (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Carlos Actualizado\",\n  \"email\": \"carlos.actualizado@example.com\",\n  \"fecha_nacimiento\": \"1990-12-15\",\n \"Estado\": \"Inactivo\"\n }"
+            },
+            "url": "http://localhost:3000/api/usuarios/1"
+          }
+        },
+        {
+          "name": "Actualizar estado usuario (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"estado\": 0 }"
+            },
+            "url": "http://localhost:3000/api/usuarios/1"
+          }
+        },
+        {
+          "name": "Eliminar usuario",
+          "request": { "method": "DELETE", "url": "http://localhost:3000/api/usuarios/1" }
+        }
+      ]
+    },
+    {
+      "name": "Lecturas",
+      "item": [
+        {
+          "name": "Crear lectura principal",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+
+            },
+            "url": "http://localhost:3000/api/lecturas/principal/1"
+          }
+        },
+        {
+          "name": "Crear lectura diaria",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+           
+            },
+            "url": "http://localhost:3000/api/lecturas/diaria/1"
+          }
+        },
+        {
+          "name": "Obtener lecturas por usuario",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/lecturas/usuario/1" }
+        },
+        {
+          "name": "Obtener lectura por ID",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/lecturas/10" }
+        }
+      ]
+    },
+    {
+      "name": "Pagos",
+      "item": [
+        {
+          "name": "Listar pagos",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/pagos" }
+        },
+        {
+          "name": "Obtener pago por usuario",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/pagos/1" }
+        },
+        {
+          "name": "Obtener estado de pago",
+          "request": { "method": "GET", "url": "http://localhost:3000/api/pagos/estado/1" }
+        },
+        {
+          "name": "Crear pago",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"monto\": 42000,\n  \"metodo\": \"transferencia\",\n }"
+            },
+            "url": "http://localhost:3000/api/pagos"
+          }
+        },
+        {
+          "name": "Actualizar pago (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"monto\": 45000,\n  \"metodo\": \"efectivo\"\n}"
+            },
+            "url": "http://localhost:3000/api/pagos/1"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1520 @@
+{
+	"info": {
+		"_postman_id": "repfora-ep-collection",
+		"name": "REPFORA E.P. - API Collection",
+		"description": "Colección completa para probar todos los módulos de REPFORA E.P. (Auth, Config, Users, Companies, EP, Bitacoras)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Autenticación (Auth)",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nationalId\": \"123456\",\n    \"password\": \"Admin123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambio Contraseña (Primer Ingreso)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newPassword\": \"NewSecurePass2024!\",\n    \"confirmPassword\": \"NewSecurePass2024!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/change-password-first",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"change-password-first"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener mi perfil (Me)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Configuración del Sistema (SystemConfig)",
+			"item": [
+				{
+					"name": "Listar Configuraciones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/system-config",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"system-config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Configuración",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/system-config/MAX_LOGBOOKS_TECHNOLOGIST",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"system-config",
+								"MAX_LOGBOOKS_TECHNOLOGIST"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Usuarios",
+			"item": [
+				{
+					"name": "Crear Instructor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nationalId\": \"1234567890\",\n    \"fullName\": \"Carlos Pérez\",\n    \"email\": \"cperez@sena.edu.co\",\n    \"phone\": \"3001234567\",\n    \"instructorType\": \"FOLLOWUP\",\n    \"knowledgeArea\": \"Technology and Informatics\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/instructors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"instructors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Instructores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/instructors?status=ACTIVE&page=1&limit=20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"instructors"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ACTIVE"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Aprendiz",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nationalId\": \"1098765432\",\n    \"fullName\": \"Ana Gómez\",\n    \"email\": \"agomez@misena.edu.co\",\n    \"phone\": \"3109876543\",\n    \"enrollmentNumber\": \"2758649\",\n    \"program\": \"Análisis y Desarrollo de Software\",\n    \"trainingLevel\": \"TECHNOLOGIST\",\n    \"trainingCenter\": \"Virtual\",\n    \"enrollmentExpiryDate\": \"2026-12-31\",\n    \"isPreNov2024\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/apprentices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"apprentices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Importar Aprendices (XLSX/CSV)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/apprentices/import",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"apprentices",
+								"import"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Empresas (Companies)",
+			"item": [
+				{
+					"name": "Crear Empresa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"taxId\": \"900123456-1\",\n    \"name\": \"Tech Solutions SAS\",\n    \"address\": \"Calle 10 # 20-30, Bogotá\",\n    \"phone\": \"6011234567\",\n    \"email\": \"contacto@techsolutions.com\",\n    \"city\": \"Bogotá\",\n    \"contacts\": [\n        {\n            \"fullName\": \"María López\",\n            \"jobTitle\": \"HR Manager\",\n            \"phone\": \"3001234567\",\n            \"email\": \"mlopez@techsolutions.com\",\n            \"isPrimary\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/companies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Empresas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/companies?search=Tech",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Tech"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Contacto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Juan Torres\",\n    \"jobTitle\": \"Operations Manager\",\n    \"isPrimary\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/companies/:id/contacts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"companies",
+								":id",
+								"contacts"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Etapas Productivas (EP)",
+			"item": [
+				{
+					"name": "Registrar EP (Aprendiz)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"modality\": \"INTERNSHIP\",\n    \"companyId\": \"{{company_id}}\",\n    \"companySnapshot\": {\n        \"apprenticeJobTitle\": \"Junior Developer\",\n        \"supervisorName\": \"Pedro Ruiz\",\n        \"supervisorPhone\": \"3001112222\",\n        \"supervisorEmail\": \"pruiz@company.com\"\n    },\n    \"startDate\": \"2025-10-01\",\n    \"estimatedEndDate\": \"2026-04-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/productive-stages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"productive-stages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aprobar EP (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2025-10-15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/productive-stages/{{ep_id}}/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"productive-stages",
+								"{{ep_id}}",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asignar Instructores (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"followupInstructorId\": \"{{instructor_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/productive-stages/{{ep_id}}/assign-instructors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"productive-stages",
+								"{{ep_id}}",
+								"assign-instructors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mis Etapas Productivas (Aprendiz)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/productive-stages/my",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"productive-stages",
+								"my"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Bitácoras",
+			"item": [
+				{
+					"name": "Enviar Bitácora (Aprendiz)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productiveStageId\": \"{{ep_id}}\",\n    \"periodStart\": \"2025-10-01\",\n    \"periodEnd\": \"2025-10-15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bitacoras",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bitacoras"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aprobar Bitácora (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/bitacoras/{{bitacora_id}}/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bitacoras",
+								"{{bitacora_id}}",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rechazar Bitácora (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Falta detallar más las actividades realizadas en la semana 2.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bitacoras/{{bitacora_id}}/reject",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bitacoras",
+								"{{bitacora_id}}",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Bitácoras (Filtro por EP)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/bitacoras?productiveStageId={{ep_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bitacoras"
+							],
+							"query": [
+								{
+									"key": "productiveStageId",
+									"value": "{{ep_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "7. Seguimientos (Trackings)",
+			"item": [
+				{
+					"name": "Agendar Seguimiento (Instructor)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productiveStageId\": \"{{ep_id}}\",\n    \"type\": \"IN_PERSON\",\n    \"scheduledDate\": \"2025-11-15\",\n    \"notes\": \"Revisión general\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/trackings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings"
+							]
+						}
+					}
+				},
+				{
+					"name": "Solicitar Seg. Extraordinario (Instructor)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productiveStageId\": \"{{ep_id}}\",\n    \"type\": \"EXTRAORDINARY\",\n    \"scheduledDate\": \"2025-11-20\",\n    \"extraordinaryReason\": \"Bajo desempeño constatado en múltiples visitas y reportes.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/trackings/extraordinary/request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"extraordinary",
+								"request"
+							]
+						}
+					}
+				},
+				{
+					"name": "Aprobar Seg. Extraordinario (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings/{{tracking_id}}/approve-extraordinary",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"{{tracking_id}}",
+								"approve-extraordinary"
+							]
+						}
+					}
+				},
+				{
+					"name": "Subir PDF de Seguimiento (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/trackings/{{tracking_id}}/upload-pdf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"{{tracking_id}}",
+								"upload-pdf"
+							]
+						}
+					}
+				},
+				{
+					"name": "Validar Firmas (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signedByInstructor\": true,\n    \"signedByApprentice\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/trackings/{{tracking_id}}/validate-signature",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"{{tracking_id}}",
+								"validate-signature"
+							]
+						}
+					}
+				},
+				{
+					"name": "Ejecutar Seguimiento (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings/{{tracking_id}}/execute",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"{{tracking_id}}",
+								"execute"
+							]
+						}
+					}
+				},
+				{
+					"name": "Marcar Como Cobrado (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings/{{tracking_id}}/mark-paid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"{{tracking_id}}",
+								"mark-paid"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Formato Template de Drive",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings/template",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"template"
+							]
+						}
+					}
+				},
+				{
+					"name": "Resumen Seguimientos de EP",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings/summary/{{ep_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"summary",
+								"{{ep_id}}"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Seguimiento por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings/{{tracking_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings",
+								"{{tracking_id}}"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Todos mis Seguimientos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/trackings?status=EXECUTED",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trackings"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "EXECUTED"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "8. Horas (Hours)",
+			"item": [
+				{
+					"name": "Resumen Global (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/hours/summary?year=2025&month=11",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hours",
+								"summary"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2025"
+								},
+								{
+									"key": "month",
+									"value": "11"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Registros del Instructor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/hours/instructors/{{instructor_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hours",
+								"instructors",
+								"{{instructor_id}}"
+							]
+						}
+					}
+				},
+				{
+					"name": "Desglose por Mes Exacto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/hours/instructors/{{instructor_id}}/month/2025/11",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hours",
+								"instructors",
+								"{{instructor_id}}",
+								"month",
+								"2025",
+								"11"
+							]
+						}
+					}
+				},
+				{
+					"name": "Marcar Horas Pagadas (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 18,\n    \"confirm\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/hours/instructors/{{instructor_id}}/month/2025/11/mark-paid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hours",
+								"instructors",
+								"{{instructor_id}}",
+								"month",
+								"2025",
+								"11",
+								"mark-paid"
+							]
+						}
+					}
+				},
+				{
+					"name": "Transferir Horas (Carry Over)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromYear\": 2025,\n    \"fromMonth\": 11,\n    \"toYear\": 2025,\n    \"toMonth\": 12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/hours/instructors/{{instructor_id}}/carry-over",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hours",
+								"instructors",
+								"{{instructor_id}}",
+								"carry-over"
+							]
+						}
+					}
+				},
+				{
+					"name": "Generar Reporte PDF",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/hours/instructors/{{instructor_id}}/report/2025/11",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hours",
+								"instructors",
+								"{{instructor_id}}",
+								"report",
+								"2025",
+								"11"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "9. Documentos (Certifications)",
+			"item": [
+				{
+					"name": "Subir Documento (Apprentice)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productiveStageId",
+									"value": "{{ep_id}}",
+									"type": "text"
+								},
+								{
+									"key": "documentType",
+									"value": "EP_CERTIFICATE",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Documentos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/documents?productiveStageId={{ep_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents"
+							],
+							"query": [
+								{
+									"key": "productiveStageId",
+									"value": "{{ep_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Estado Documental de la EP (Overview)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/documents/ep/{{ep_id}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"ep",
+								"{{ep_id}}",
+								"status"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Documento por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/documents/{{document_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"{{document_id}}"
+							]
+						}
+					}
+				},
+				{
+					"name": "Aprobar Documento (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/documents/{{document_id}}/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"{{document_id}}",
+								"approve"
+							]
+						}
+					}
+				},
+				{
+					"name": "Rechazar Documento (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"El documento no está firmado por el jefe inmediato, corrígelo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/documents/{{document_id}}/reject",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"{{document_id}}",
+								"reject"
+							]
+						}
+					}
+				},
+				{
+					"name": "Re-Subir Documento Rechazado (Apprentice)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/documents/{{document_id}}/resubmit",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"{{document_id}}",
+								"resubmit"
+							]
+						}
+					}
+				},
+				{
+					"name": "Solicitar Borrado Auditable (Instructor)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"Se subió el certificado incorrecto que pertenecía a otro aprendiz del mismo nombre.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/documents/{{document_id}}/request-deletion",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"{{document_id}}",
+								"request-deletion"
+							]
+						}
+					}
+				},
+				{
+					"name": "Borrar Documento Temporalmente (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/documents/{{document_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"{{document_id}}"
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "company_id",
+			"value": "ID_EMPRESA_AQUI",
+			"type": "string"
+		},
+		{
+			"key": "ep_id",
+			"value": "ID_EP_AQUI",
+			"type": "string"
+		},
+		{
+			"key": "bitacora_id",
+			"value": "ID_BITACORA_AQUI",
+			"type": "string"
+		},
+		{
+			"key": "instructor_id",
+			"value": "ID_INSTRUCTOR_AQUI",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "PENDIENTE",
+			"type": "string"
+		},
+		{
+			"key": "tracking_id",
+			"value": "ID_TRACKING_AQUI",
+			"type": "string"
+		},
+		{
+			"key": "document_id",
+			"value": "ID_DOCUMENT_AQUI",
+			"type": "string"
+		}
+	]
+}
